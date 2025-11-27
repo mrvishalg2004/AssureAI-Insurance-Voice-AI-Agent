@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 218 100% 95%;
+    --foreground: 224 71% 4%;
+    --card: 210 40% 98%;
+    --card-foreground: 224 71% 4%;
+    --popover: 210 40% 98%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 224 100% 58%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 13% 91%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 220 13% 91%;
+    --muted-foreground: 240 5.3% 26.1%;
+    --accent: 276 100% 58%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 85%;
+    --input: 220 13% 91%;
+    --ring: 224 100% 58%;
+    --chart-1: 224 100% 58%;
+    --chart-2: 276 100% 58%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 224 100% 58%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 276 100% 58%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 100% 58%;
+    --chart-1: 224 100% 58%;
+    --chart-2: 276 100% 58%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Ripple Animation for Voice Button */
+@layer components {
+  .ripple-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple-btn::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: hsla(var(--primary-foreground), 0.3);
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    top: 50%;
+    left: 50%;
+    animation: ripple 1s ease-out;
+    opacity: 0;
+  }
+  .ripple-btn:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+  }
+  @keyframes ripple {
+    from {
+      transform: scale(0);
+      opacity: 1;
+    }
+    to {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Recording Animation */
+  .recording-indicator {
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+}
